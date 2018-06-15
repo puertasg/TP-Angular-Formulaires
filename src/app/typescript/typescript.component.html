@@ -6,6 +6,12 @@
   <div>
     <label>Password: </label>
     <input type="password" formControlName="password">
+    <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('email')">
+      Le champ email n'est pas valide
+    </div>
+    <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('required')">
+      Le champ email est requis
+    </div>
   </div>
   <button type="submit">Login</button>
   <button type="reset" (click)="handleClear()">Clear</button>

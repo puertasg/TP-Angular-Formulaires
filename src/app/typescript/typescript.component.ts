@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-typescript',
@@ -13,7 +13,7 @@ export class TypescriptComponent implements OnInit {
   userForm: FormGroup;
 
   constructor(fb: FormBuilder) {
-    this.emailCtrl = fb.control('');
+    this.emailCtrl = fb.control('', [Validators.email, Validators.required]);
     this.passwordCtrl = fb.control('');
 
     this.userForm = fb.group({
@@ -26,7 +26,7 @@ export class TypescriptComponent implements OnInit {
     this.emailCtrl.setValue('');
     this.passwordCtrl.setValue('');
   }
-  
+
   handleSubmit() {
     console.log(this.userForm.value);
   }
