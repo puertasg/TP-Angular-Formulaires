@@ -3,16 +3,19 @@
     <label>Email: </label>
     <input formControlName="email">
   </div>
+  <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('email')">
+    Le champ email n'est pas valide
+  </div>
+  <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('required')">
+    Le champ email est requis
+  </div>
   <div>
     <label>Password: </label>
     <input type="password" formControlName="password">
-    <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('email')">
-      Le champ email n'est pas valide
-    </div>
-    <div *ngIf="emailCtrl.dirty && emailCtrl.hasError('required')">
-      Le champ email est requis
+    <div *ngIf="passwordCtrl.dirty && passwordCtrl.hasError('isPrefixNartawak')">
+      Le champ password ne commence pas par le préfix nk-
     </div>
   </div>
-  <button type="submit">Login</button>
+  <button type="submit" [disabled]="userForm.invalid">Login</button>
   <button type="reset" (click)="handleClear()">Clear</button>
 </form>
