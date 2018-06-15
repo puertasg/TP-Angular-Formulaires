@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { isPrefixNartawakValidator } from '../validators/password.validator';
 
 @Component({
   selector: 'app-typescript',
@@ -14,7 +15,7 @@ export class TypescriptComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
     this.emailCtrl = fb.control('', [Validators.email, Validators.required]);
-    this.passwordCtrl = fb.control('');
+    this.passwordCtrl = fb.control('', [isPrefixNartawakValidator]);
 
     this.userForm = fb.group({
       email: this.emailCtrl,
