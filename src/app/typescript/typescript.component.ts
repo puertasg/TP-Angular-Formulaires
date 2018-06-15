@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-typescript',
@@ -7,7 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TypescriptComponent implements OnInit {
 
-  constructor() { }
+  emailCtrl: FormControl;
+  passwordCtrl: FormControl;
+  userForm: FormGroup;
+
+  constructor(fb: FormBuilder) {
+    this.emailCtrl = fb.control('');
+    this.passwordCtrl = fb.control('');
+
+    this.userForm = fb.group({
+      email: this.emailCtrl,
+      password: this.passwordCtrl
+    });
+  }
+
+  handleClear() {
+    this.emailCtrl.setValue('');
+    this.passwordCtrl.setValue('');
+  }
+  
+  handleSubmit() {
+    console.log(this.userForm.value);
+  }
 
   ngOnInit() {
   }
