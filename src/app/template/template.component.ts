@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../classes/User';
 
 @Component({
   selector: 'app-template',
@@ -7,12 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateComponent implements OnInit {
 
+  user:User = new User('nartawak', 'test');
   constructor() { }
 
   ngOnInit() {
   }
 
-  handleSubmit(value) {
-    console.log("Form value", value);
+  handleSubmit() {
+    console.log("Form value", this.user);
   }
 }

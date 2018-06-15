@@ -1,12 +1,12 @@
-<form (ngSubmit)="handleSubmit(loginForm.value)" #loginForm="ngForm">
+<form (ngSubmit)="handleSubmit()" #loginForm="ngForm">
   <div>
     <label>Email : </label>
-    <input name="email" ngModel>
+    <input name="email" [ngModel]=user.email (ngModelChange)="user.email=$event">
   </div>
 
   <div>
     <label>Password : </label>
-    <input type="password" name="password" ngModel>
+    <input type="password" name="password" [ngModel]="user.password" (ngModelChange)="user.password=$event">
   </div>
   <button type="submit">Login</button>
 </form>

@@ -2,7 +2,10 @@ export class User {
     private _email: string;
     private _password: string;
 
-    constructor() { }
+    constructor(mail?: string, passwd?: string) {
+        this._email = mail;
+        this._password = passwd;
+    }
 
     /**
      * Getter email
